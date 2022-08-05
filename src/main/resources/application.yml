@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/manager_system?serverTimeZone=GMT%2b8
+    username: root
+    password: 123456
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  port: 8081
+
+mybatis-plus:
+  #  扫描mapper包下的.xml文件，否则会报错
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    #  打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
