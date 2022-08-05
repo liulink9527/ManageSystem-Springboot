@@ -7,6 +7,7 @@ import cn.hutool.poi.excel.ExcelWriter;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.link.common.Result;
 import com.link.controller.dto.UserDTO;
 import com.link.entity.User;
 import com.link.service.IUserService;
@@ -126,8 +127,9 @@ public class UserController {
 
     @ApiOperation(value = "登录接口")
     @PostMapping("/login")
-    public Boolean login(@RequestBody UserDTO user) {
-        return userService.login(user);
+    public Result login(@RequestBody UserDTO user) {
+        UserDTO userDTO = userService.login(user);
+        return Result.success(userDTO);
     }
 
 }

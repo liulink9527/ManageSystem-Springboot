@@ -16,5 +16,5 @@ import java.util.List;
  */
 public interface IUserService extends IService<User> {
     Integer deleteBatch(List<Integer> ids);
-    Boolean login(UserDTO user);
+    UserDTO login(UserDTO user);
 }
