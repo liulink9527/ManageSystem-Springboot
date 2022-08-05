@@ -55,4 +55,23 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
 
     }
+
+    @Override
+    public Integer register(User user) {
+        String username = user.getUsername();
+        QueryWrapper<User> qw = new QueryWrapper<>();
+        qw.eq("username",username);
+        User u = null;
+        try {
+            u = userMapper.selectOne(qw);
+        } catch (Exception e) {
+            throw new ServiceException(Constants.CODE_500,"系统错误");
+        }
+        if (u != null) {
+            throw new ServiceException(Constants.CODE_500,"用户名已存在");
+        } else {
+            int res = userMapper.insertUser(user);
+            return res;
+        }
+    }
 }

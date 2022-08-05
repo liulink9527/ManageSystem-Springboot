@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.link.mapper.UserMapper">
 
+    <insert id="insertUser">
+        insert into tb_user(username,password)
+        values(#{username},#{password})
+    </insert>
+
     <delete id="deleteBatchIds">
         delete from tb_user
         where id in (
@@ -10,4 +15,6 @@
         </foreach>
         )
     </delete>
+
+
 </mapper>

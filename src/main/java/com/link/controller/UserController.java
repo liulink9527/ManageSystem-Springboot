@@ -132,5 +132,12 @@ public class UserController {
         return Result.success(userDTO);
     }
 
+    @ApiOperation(value = "注册接口")
+    @PostMapping("/register")
+    public Result register(@RequestBody User user) {
+        Integer res = userService.register(user);
+        return Result.success();
+    }
+
 }
 
