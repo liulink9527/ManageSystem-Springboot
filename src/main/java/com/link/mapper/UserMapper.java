@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author Link
@@ -18,7 +18,10 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
     int deleteBatchIds(List<Integer> ids);
+
     int insertUser(User user);
+
+    User selectUserByUserId(@Param("id") Integer id);
 
     User selectUserByUsername(@Param("username") String username);
 }

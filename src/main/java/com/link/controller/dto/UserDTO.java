@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * 接收前端登录请求的参数
+ *
  * @author Link
  * @Description
  * @date 2022-08-04 16:41
@@ -14,4 +15,5 @@ public class UserDTO {
     private String password;
     private String nickname;
     private String avatarUrl;
+    private String token;
 }

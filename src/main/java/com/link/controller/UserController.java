@@ -8,9 +8,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.link.common.Result;
+import com.link.common.annotation.PassToken;
 import com.link.controller.dto.UserDTO;
 import com.link.entity.User;
 import com.link.service.IUserService;
+import com.link.utils.TokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +127,7 @@ public class UserController {
         return userService.saveBatch(list);
     }
 
+    @PassToken
     @ApiOperation(value = "登录接口")
     @PostMapping("/login")
     public Result login(@RequestBody UserDTO user) {

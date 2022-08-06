@@ -10,6 +10,7 @@ import com.link.exception.ServiceException;
 import com.link.mapper.UserMapper;
 import com.link.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.link.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
         if (u != null) {
             BeanUtil.copyProperties(u, user, true);
+            String token = TokenUtil.getToken(u.getId().toString(), u.getPassword());
+            user.setToken(token);
             return user;
         } else {
             throw new ServiceException(Constants.CODE_500, "用户名或错误");
