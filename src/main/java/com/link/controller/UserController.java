@@ -139,5 +139,12 @@ public class UserController {
         return Result.success();
     }
 
+    @ApiOperation(value = "根据username获取用户")
+    @GetMapping("/findUser")
+    public Result findUser(@RequestParam String username) {
+        User user = userService.findUser(username);
+        return Result.success(user);
+    }
+
 }
 

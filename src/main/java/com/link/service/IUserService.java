@@ -19,4 +19,6 @@ public interface IUserService extends IService<User> {
     UserDTO login(UserDTO user);
 
     Integer register(User user);
+
+    User findUser(String username);
 }
