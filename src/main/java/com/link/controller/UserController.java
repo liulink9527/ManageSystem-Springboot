@@ -85,6 +85,7 @@ public class UserController {
         return userService.deleteBatch(ids);
     }
 
+    @PassToken
     @ApiOperation(value = "导出接口")
     @GetMapping("/export")
     public void export(HttpServletResponse response) throws IOException {
@@ -111,6 +112,7 @@ public class UserController {
         writer.close();
     }
 
+    @PassToken
     @ApiOperation(value = "导入接口")
     @PostMapping("/import")
     public Boolean imp(MultipartFile file) throws IOException {
@@ -135,6 +137,7 @@ public class UserController {
         return Result.success(userDTO);
     }
 
+    @PassToken
     @ApiOperation(value = "注册接口")
     @PostMapping("/register")
     public Result register(@RequestBody User user) {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.link.mapper.FileMapper">
+
+    <insert id="insertFile">
+        insert into tb_file(name, type, size, url,md5)
+        values (#{name}, #{type}, #{size}, #{url},#{md5})
+    </insert>
+    <select id="selectByMd5" resultType="com.link.entity.FileDao">
+        select *
+        from tb_file
+        where md5 = #{md5}
+    </select>
+
+</mapper>
