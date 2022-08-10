@@ -6,7 +6,11 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.link.common.Result;
 import com.link.entity.FileDao;
+import com.link.entity.User;
 import com.link.mapper.FileMapper;
 import com.link.service.IFileService;
 import io.swagger.annotations.Api;
@@ -112,5 +116,41 @@ public class FileController {
         os.flush();
         os.close();
     }
+
+    @ApiOperation(value = "分页查询接口 Mybatis-plus")
+    @GetMapping("/page")
+    public IPage<FileDao> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,
+                                   @RequestParam(name = "name") String filename) {
+
+        IPage<FileDao> page = new Page<>(pageNum, pageSize);
+        QueryWrapper<FileDao> qw = new QueryWrapper<>();
+        qw.like("name", filename);
+        qw.ne("is_delete", true);
+        qw.orderByDesc("id");
+        IPage<FileDao> fileIPage = fileService.page(page, qw);
+        return fileIPage;
+    }
+
+    @ApiOperation(value = "删除文件")
+    @DeleteMapping("/{id}")
+    public Result deleteFile(@PathVariable Integer id) {
+        Integer res = fileService.deleteFile(id);
+        return Result.success(res);
+    }
+
+    @ApiOperation(value = "批量删除文件")
+    @PostMapping("/batch")
+    public Result deleteBatchFile(@RequestBody Integer[] ids) {
+        Integer res = fileService.deleteBatchFile(ids);
+        return Result.success(res);
+    }
+
+    @ApiOperation(value = "更新文件启用状态")
+    @PostMapping("/update")
+    public Result update(@RequestBody FileDao fileDao) {
+        Integer res = fileService.updateFile(fileDao);
+        return Result.success(res);
+    }
+
 }
 

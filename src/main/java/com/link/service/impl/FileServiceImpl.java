@@ -45,4 +45,38 @@ public class FileServiceImpl extends ServiceImpl<FileMapper, FileDao> implements
         }
         return fileDao;
     }
+
+    @Override
+    public Integer deleteFile(Integer id) {
+        int res = 0;
+        try {
+            res = fileMapper.updateFileIsDelete(id);
+        } catch (Exception e) {
+            throw new ServiceException(Constants.CODE_500, "系统错误");
+        }
+        return res;
+    }
+
+    @Override
+    public Integer deleteBatchFile(Integer[] ids) {
+        int res = 0;
+        try {
+            res = fileMapper.updateFileIsDeleteByIds(ids);
+        } catch (Exception e) {
+            throw new ServiceException(Constants.CODE_500, "系统错误");
+        }
+        return res;
+    }
+
+    @Override
+    public Integer updateFile(FileDao fileDao) {
+        int res = 0;
+        try {
+            res = fileMapper.updateFile(fileDao);
+        } catch (Exception e) {
+            throw new ServiceException(Constants.CODE_500, "系统错误");
+        }
+        return res;
+    }
+
 }

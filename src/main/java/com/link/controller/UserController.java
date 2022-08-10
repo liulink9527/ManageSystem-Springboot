@@ -80,8 +80,8 @@ public class UserController {
     }
 
     @ApiOperation(value = "批量删除用户")
-    @DeleteMapping("/batch")
-    public Integer deleteBatch(@RequestParam List<Integer> ids) {
+    @PostMapping("/batch")
+    public Integer deleteBatch(@RequestBody List<Integer> ids) {
         return userService.deleteBatch(ids);
     }
 
