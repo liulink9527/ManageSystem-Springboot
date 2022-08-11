@@ -3,6 +3,8 @@ package com.link.service;
 import com.link.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IRoleService extends IService<Role> {
 
+    boolean deleteById(Integer id);
+
+    boolean deleteByIds(List<Integer> ids);
 }

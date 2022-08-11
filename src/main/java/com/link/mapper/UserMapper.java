@@ -16,6 +16,7 @@ import java.util.List;
  * @author Link
  * @since 2022-08-03
  */
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
     int deleteBatchIds(List<Integer> ids);
 

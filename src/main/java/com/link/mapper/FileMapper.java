@@ -2,6 +2,7 @@ package com.link.mapper;
 
 import com.link.entity.FileDao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Param;
  * @author Link
  * @since 2022-08-08
  */
+@Mapper
 public interface FileMapper extends BaseMapper<FileDao> {
 
     int insertFile(FileDao fileDao);
