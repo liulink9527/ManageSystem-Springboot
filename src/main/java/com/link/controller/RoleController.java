@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.link.common.Result;
 import com.link.entity.Role;
+import com.link.entity.RoleMenu;
+import com.link.mapper.RoleMenuMapper;
 import com.link.service.IRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
@@ -76,6 +78,19 @@ public class RoleController {
         return Result.success(roleService.page(new Page<>(pageNum, pageSize), queryWrapper));
     }
 
+    @ApiOperation(value = "角色和菜单绑定")
+    @PostMapping("/roleMenu/{roleId}")
+    public Result roleMenu(@PathVariable Integer roleId, @RequestBody List<Integer> menuIds) {
+        roleService.setRoleMenu(roleId, menuIds);
+        return Result.success();
+    }
+
+    @ApiOperation(value = "根据roleId获取菜单权限")
+    @GetMapping("/getRoleMenu/{roleId}")
+    public Result getRoleMenu(@PathVariable Integer roleId) {
+        List<Integer> roleMenu = roleService.getRoleMenu(roleId);
+        return Result.success(roleMenu);
+    }
 
 
 }

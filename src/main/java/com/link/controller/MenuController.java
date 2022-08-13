@@ -67,13 +67,7 @@ public class MenuController {
     @ApiOperation(value = "查找所有菜单")
     @GetMapping
     public Result findAll() {
-        List<Menu> list = menuService.list();
-        //找出一级菜单
-        List<Menu> parentNode = list.stream().filter(menu -> menu.getPid() == null).collect(Collectors.toList());
-        for (Menu menu : parentNode) {
-            List<Menu> secondMenu = list.stream().filter(m ->  menu.getId().equals(m.getPid())).collect(Collectors.toList());
-            menu.setChildren(secondMenu);
-        }
+        List<Menu> parentNode = menuService.findMenus();
         return Result.success(parentNode);
     }
 

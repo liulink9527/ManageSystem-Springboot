@@ -12,4 +12,5 @@ public interface Constants {
     String CODE_401 = "401";
 
     String DICT_TYPE_ICON = "icon";
+
 }

@@ -20,4 +20,6 @@ public interface RoleMapper extends BaseMapper<Role> {
     int deleteRoleById(Integer id);
 
     int deleteRoleByIds(List<Integer> ids);
+
+    Role selectByFlag(String flag);
 }

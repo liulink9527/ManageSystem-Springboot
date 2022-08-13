@@ -37,7 +37,7 @@ public class Generator {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "E:\\workspace\\ManagerSystem\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("tb_menu") // 设置需要生成的表名
+                    builder.addInclude("tb_role_menu") // 设置需要生成的表名
                             .addTablePrefix("tb_"); // 设置过滤表前缀
                 })
                 .execute();

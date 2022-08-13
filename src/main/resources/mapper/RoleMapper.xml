@@ -16,4 +16,9 @@
         </foreach>
         )
     </delete>
+    <select id="selectByFlag" resultType="com.link.entity.Role">
+        select *
+        from tb_role
+        where flag = #{flag}
+    </select>
 </mapper>

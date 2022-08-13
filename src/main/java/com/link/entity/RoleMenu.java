@@ -19,29 +19,24 @@ import lombok.ToString;
  * </p>
  *
  * @author Link
- * @since 2022-08-11
+ * @since 2022-08-13
  */
-@TableName("tb_role")
-@ApiModel(value = "Role对象", description = "")
+@TableName("tb_role_menu")
+@ApiModel(value = "RoleMenu对象", description = "")
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role implements Serializable {
+public class RoleMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty("名称")
-    private String name;
+    private Integer roleId;
 
-    @ApiModelProperty("描述")
-    private String description;
+    private Integer menuId;
 
-    @ApiModelProperty("唯一标识")
-    private String flag;
 
 }
